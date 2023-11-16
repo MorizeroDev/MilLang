@@ -1,25 +1,28 @@
 #include <CoreFoundation/CoreFoundation.h>
 
-// change it to CFLocaleCopyPreferredLanguages
 extern "C"
 void getLocale(char *buffer) {
-    memset(buffer,0,16);
+    memset(buffer, 0, 4096);
 
     CFArrayRef arr = CFLocaleCopyPreferredLanguages();
     auto count = CFArrayGetCount(arr);
-    if (count == 0) {
-        return;
+    size_t dstIdx = 0;
+
+    for (int i = 0; i < count; i++) {
+        auto value = (CFStringRef) CFArrayGetValueAtIndex(arr, i);
+        char tmpBuffer[128];
+        bool succeed = CFStringGetCString(value, tmpBuffer, 128, kCFStringEncodingUTF8);
+        if (succeed) {
+            strcpy(buffer + dstIdx, tmpBuffer);
+            dstIdx += strlen(tmpBuffer);
+            buffer[dstIdx] = ':';
+            dstIdx++;
+        }
     }
 
-    auto value = (CFStringRef) CFArrayGetValueAtIndex(arr,0);
-    CFStringGetCString(value, buffer, 15, kCFStringEncodingUTF8);
+    if (dstIdx > 1) {
+        buffer[dstIdx - 1] = '\0';
+        dstIdx--;
+    }
     CFRelease(arr);
 }
-
-//extern "C"
-//void getLocale(char *buffer) {
-//    CFLocaleRef cflocale = CFLocaleCopyCurrent();
-//    auto value = (CFStringRef) CFLocaleGetValue(cflocale, kCFLocaleIdentifier);
-//    CFStringGetCString(value, buffer, 16, kCFStringEncodingUTF8);
-//    CFRelease(cflocale);
-//}

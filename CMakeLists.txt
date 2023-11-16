@@ -4,8 +4,8 @@ project(GetMacOSXLocale)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-framework Foundation")
 
-add_library(GetMacOSXLocale SHARED lib.cpp lib.h)
+add_library(MilLang SHARED lib.cpp lib.h)
 
-add_library(GetMacOSXLocaleStatic lib.cpp lib.h)
-add_executable(GetMacOSXLocaleMain lib.h main.cpp)
-target_link_libraries(GetMacOSXLocaleMain GetMacOSXLocaleStatic)
+add_library(MilLangStatic lib.cpp lib.h)
+add_executable(MilLangMain lib.h main.cpp)
+target_link_libraries(MilLangMain MilLangStatic)
