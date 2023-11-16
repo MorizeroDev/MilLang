@@ -1,8 +1,10 @@
 #include <cstdio>
 #include "lib.h"
 
+const int bufferSize = 4096;
+char t[bufferSize];
+
 int main() {
-    char t[4096];
-    getLocale(t);
-    printf("%s",t);
+    getLocale(t, bufferSize);
+    printf("%s", t);
 }

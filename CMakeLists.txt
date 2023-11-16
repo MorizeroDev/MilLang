@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.26)
-project(GetMacOSXLocale)
+project(MilLang)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "-framework Foundation")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -framework Foundation")
 
 add_library(MilLang SHARED lib.cpp lib.h)
 
