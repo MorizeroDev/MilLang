@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.26)
-project(MilLang)
+project(Milang)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -framework Foundation")
 
-add_library(MilLang SHARED lib.cpp lib.h)
+add_library(Milang SHARED lib.cpp lib.h)
 
-add_library(MilLangStatic lib.cpp lib.h)
-add_executable(MilLangMain lib.h main.cpp)
-target_link_libraries(MilLangMain MilLangStatic)
+add_library(MilangStatic lib.cpp lib.h)
+
+add_executable(MilangMain lib.h main.cpp)
+target_link_libraries(MilangMain MilangStatic)
