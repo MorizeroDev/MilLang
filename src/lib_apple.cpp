@@ -1,6 +1,6 @@
-#include<CoreFoundation/CoreFoundation.h>
-#include<string>
-#include<numeric>
+#include <CoreFoundation/CoreFoundation.h>
+#include <string>
+#include <numeric>
 
 extern "C"
 void getLocale(char *buffer, size_t bufferSize) {
