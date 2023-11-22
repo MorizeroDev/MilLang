@@ -3,7 +3,7 @@ project(Milang)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(MILANG_SRC src/lib.h)
+set(MILANG_SRC src/lib.h src/export_macros.h)
 set(MILANG_CXX_FLAGX)
 
 if (DEFINED MILANG_BUILD_APPLE AND MILANG_BUILD_APPLE STREQUAL ON)
@@ -20,5 +20,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${MILANG_CXX_FLAGX}")
 add_library(Milang SHARED ${MILANG_SRC})
 add_library(MilangStatic ${MILANG_SRC})
 
-add_executable(MilangMain src/lib.h src/main.cpp)
+add_executable(MilangMain src/lib.h src/export_macros.h src/main.cpp)
 target_link_libraries(MilangMain MilangStatic)

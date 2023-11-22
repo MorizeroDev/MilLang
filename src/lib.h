@@ -1,5 +1,8 @@
 #ifndef GETMACOSXLOCALE_LIB_H
 #define GETMACOSXLOCALE_LIB_H
+
+#include "export_macros.h"
+
 extern "C"
-void getLocale(char *buffer, size_t bufferSize);
+MILIZE_HELPER_EXPORT void getLocale(char *buffer, size_t bufferSize);
 #endif //GETMACOSXLOCALE_LIB_H
