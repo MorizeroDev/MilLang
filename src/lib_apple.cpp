@@ -1,10 +1,10 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <string>
 #include <numeric>
-#include "lib.h"
 
-extern "C"
-MILIZE_HELPER_EXPORT void getLocale(char *buffer, size_t bufferSize) {
+#include <MiLang/lib.h>
+
+void getLocale(char *buffer, size_t bufferSize) {
     CFArrayRef arr = CFLocaleCopyPreferredLanguages();
     auto count = CFArrayGetCount(arr);
 

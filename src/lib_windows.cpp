@@ -1,7 +1,8 @@
 #include <string>
 #include <windows.h>
 #include <vector>
-#include "lib.h"
+
+#include <MiLang/lib.h>
 
 std::string getString(std::vector<wchar_t> data) {
     std::string result;
@@ -70,8 +71,7 @@ std::string getResult() {
     return s1 + ":" + s2;
 }
 
-extern "C"
-MILIZE_HELPER_EXPORT void getLocale(char *buffer, size_t bufferSize) {
+void getLocale(char *buffer, size_t bufferSize) {
     auto result = getResult();
     auto resultCStr = result.c_str();
     auto len = result.length();
